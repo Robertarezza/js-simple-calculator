@@ -25,21 +25,22 @@ for (let i = 0; i < numeri.length; i++) {
         result.innerHTML = resultNumber;
 
     })
+}
 
-    let operazione;
-
+   
+let operazione;
 for (let m = 0; m < operatore.length; m++){
     
     operatore[m].addEventListener("click", function () {
     
-        //let valOper = this.innerHTML;
-        //console.log(valOper);
+        operazione = this.innerHTML;
+        console.log(operazione);
 
-        operazione = "";
-        result.innerHTML = operazione
+        resultNumber =  "";
+        result.innerHTML =  resultNumber
 })
 }
 
+console.log(resultNumber);
 
-}
 
