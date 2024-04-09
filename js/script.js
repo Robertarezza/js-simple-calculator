@@ -1,46 +1,90 @@
 let numeri = document.querySelectorAll(".my_number");
-console.log(numeri);
+//console.log(numeri);
 
-const tastiera = document.querySelector(".numbers")
+let reset = document.querySelector(".canc");
+//console.log(reset);
 
-let result = document.getElementById("result");
-console.log(result);
+let display = document.getElementById("result");
+//console.log(display);
 
 let operatore = document.querySelectorAll(".oper");
-console.log(operatore);
+//console.log(operatore);
 
-    
-let resultNumber = "";
+let userUguale = document.querySelector(".uguale");
+//console.log(userUguale);
+
+
+
+
+
+let resultNumber1 = "";
 
 for (let i = 0; i < numeri.length; i++) {
     //console.log(numeri[i].innerHTML);
-    
+
     numeri[i].addEventListener("click", function () {
         //console.log("this");
-         //console.log(this);
-        let valoreNumero = this.innerHTML;
-        console.log(valoreNumero);
+        //console.log(this);
+        //let valoreNumero = this.innerHTML;
+        //console.log(valoreNumero);
 
-        resultNumber += valoreNumero;
-        result.innerHTML = resultNumber;
+        display.innerHTML += this.innerHTML;
 
     })
 }
 
-   
-let operazione;
-for (let m = 0; m < operatore.length; m++){
-    
-    operatore[m].addEventListener("click", function () {
-    
-        operazione = this.innerHTML;
-        console.log(operazione);
 
-        resultNumber =  "";
-        result.innerHTML =  resultNumber
-})
+let operazione;
+for (let m = 0; m < operatore.length; m++) {
+
+    operatore[m].addEventListener("click", function () {
+
+
+        operazione = this.innerHTML;
+        //console.log(operazione);
+        resultNumber1 = "";
+
+
+        resultNumber1 += parseInt(display.innerHTML);
+        display.innerHTML = "";
+
+
+    })
 }
 
-console.log(resultNumber);
+
+let resultNumber2;
+
+userUguale.addEventListener("click", function () {
+    resultNumber2 = display.textContent;
+    //console.log(resultNumber1, operazione, resultNumber2);
+
+    switch (operazione) {
+        case '+':
+            result = parseInt(resultNumber1) + parseInt(resultNumber2);
+            break;
+        case '-':
+            result = parseInt(resultNumber1) - parseInt(resultNumber2);
+            break;
+        case '*':
+            result = parseInt(resultNumber1) * parseInt(resultNumber2);
+            break;
+        case '/':
+            result = parseInt(resultNumber1) / parseInt(resultNumber2)
+            break;
+        default:
+            result = 0;
+            break;
+
+    }
+    display.textContent = result;
+    //console.log(display);
+})
 
 
+
+reset.addEventListener("click", function () {
+    operazione = "";
+    resultNumber1 = "";
+    display.innerText = "";
+})
